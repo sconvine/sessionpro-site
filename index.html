@@ -1,0 +1,506 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>SessionPro</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap">
+
+<style>
+  /* Layout: single-column document with sticky nav, max-width prose */
+  :root {
+    --bg: #f8f7f5;
+    --fg: #1a1a1a;
+    --fg-muted: #555;
+    --border: #e0ddd8;
+    --accent: #2563eb;
+    --accent-light: #eff4ff;
+    --surface: #ffffff;
+    --nav-bg: rgba(248, 247, 245, 0.92);
+
+    --font-display: 'DM Serif Display', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+
+    color-scheme: light;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #111110;
+      --fg: #f0ede8;
+      --fg-muted: #999;
+      --border: #2a2a28;
+      --accent: #4f8ef7;
+      --accent-light: #1a2340;
+      --surface: #1c1c1a;
+      --nav-bg: rgba(17, 17, 16, 0.92);
+      color-scheme: dark;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #111110;
+    --fg: #f0ede8;
+    --fg-muted: #999;
+    --border: #2a2a28;
+    --accent: #4f8ef7;
+    --accent-light: #1a2340;
+    --surface: #1c1c1a;
+    --nav-bg: rgba(17, 17, 16, 0.92);
+    color-scheme: dark;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    padding-inline: 20px;
+    padding-block: 0;
+  }
+
+  /* Nav */
+  nav {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    background: var(--nav-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+    margin-inline: -20px;
+    z-index: 100;
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--fg);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--fg-muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 0.15s;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--accent);
+  }
+
+  /* Page sections */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* Content wrapper */
+  .content {
+    max-width: 680px;
+    margin: 0 auto;
+    padding-block: 64px 96px;
+  }
+
+  /* Page header */
+  .page-header {
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .page-header .eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .page-header h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--fg);
+    text-wrap: balance;
+    margin-bottom: 12px;
+  }
+
+  .page-header .meta {
+    font-size: 0.875rem;
+    color: var(--fg-muted);
+  }
+
+  /* Prose */
+  h2 {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    letter-spacing: -0.01em;
+    color: var(--fg);
+    margin-top: 48px;
+    margin-bottom: 16px;
+    text-wrap: balance;
+  }
+
+  p {
+    color: var(--fg);
+    margin-bottom: 16px;
+    max-width: 65ch;
+  }
+
+  ul, ol {
+    padding-left: 1.4em;
+    margin-bottom: 16px;
+  }
+
+  li {
+    margin-bottom: 6px;
+    color: var(--fg);
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  strong { font-weight: 600; }
+
+  /* Info box */
+  .info-box {
+    background: var(--accent-light);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    padding: 16px 20px;
+    margin: 32px 0;
+    font-size: 0.9375rem;
+  }
+
+  .info-box p {
+    margin-bottom: 0;
+    color: var(--fg);
+  }
+
+  /* Contact card */
+  .contact-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-top: 48px;
+  }
+
+  .contact-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+
+  .contact-card p {
+    color: var(--fg-muted);
+    margin-bottom: 20px;
+    font-size: 0.9375rem;
+  }
+
+  .contact-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.9375rem;
+  }
+
+  .contact-label {
+    font-weight: 600;
+    min-width: 60px;
+    color: var(--fg-muted);
+    font-size: 0.8125rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .contact-value {
+    color: var(--fg);
+    font-family: monospace;
+    font-size: 0.95rem;
+    background: var(--bg);
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    flex: 1;
+    word-break: break-all;
+  }
+
+  copy-btn {
+    display: inline-block;
+  }
+
+  button.copy {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--fg-muted);
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 4px 10px;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  button.copy:hover { background: var(--accent-light); color: var(--accent); border-color: var(--accent); }
+  button.copy:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* Support FAQ */
+  .faq-item {
+    border-top: 1px solid var(--border);
+    padding: 20px 0;
+  }
+
+  .faq-item:last-child { border-bottom: 1px solid var(--border); }
+
+  .faq-q {
+    font-weight: 600;
+    font-size: 0.9375rem;
+    margin-bottom: 8px;
+  }
+
+  .faq-a {
+    color: var(--fg-muted);
+    font-size: 0.9375rem;
+    margin: 0;
+  }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--border);
+    padding-block: 28px;
+    margin-inline: -20px;
+    padding-inline: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  footer p {
+    font-size: 0.8125rem;
+    color: var(--fg-muted);
+    margin: 0;
+    max-width: none;
+  }
+
+  footer a { color: var(--fg-muted); }
+
+  @media (max-width: 500px) {
+    .nav-links { gap: 16px; }
+    .content { padding-block: 40px 64px; }
+    .contact-card { padding: 20px; }
+    .contact-row { flex-wrap: wrap; }
+  }
+</style>
+
+<nav>
+  <a href="#" class="nav-logo" onclick="showPage('privacy'); return false;">SessionPro</a>
+  <ul class="nav-links">
+    <li><a href="#" id="nav-privacy" class="active" onclick="showPage('privacy'); return false;">Privacy Policy</a></li>
+    <li><a href="#" id="nav-support" onclick="showPage('support'); return false;">Support</a></li>
+  </ul>
+</nav>
+
+<!-- Privacy Policy Page -->
+<div id="page-privacy" class="page active">
+  <div class="content">
+    <div class="page-header">
+      <p class="eyebrow">Legal</p>
+      <h1>Privacy Policy</h1>
+      <p class="meta">Convine Technologies &nbsp;·&nbsp; Last updated: September 2026</p>
+    </div>
+
+    <div class="info-box">
+      <p>SessionPro is a Shopify app for venue operators. This policy explains how we collect, use, and protect data belonging to merchants who install SessionPro and their customers.</p>
+    </div>
+
+    <h2>Who we are</h2>
+    <p>SessionPro is operated by Convine Technologies. We provide session scheduling, check-in, and membership management software for venues including skate parks and indoor recreation facilities.</p>
+    <p>If you have questions about this policy, contact us at <strong>privacy@convine.com</strong>.</p>
+
+    <h2>Data we collect</h2>
+    <p>We collect data in two categories:</p>
+    <p><strong>Merchant data</strong> — information about the Shopify store that installs SessionPro, including the store domain, access tokens required to use the Shopify API, store timezone, and branding settings (name, logo, colours, reply email).</p>
+    <p><strong>Customer data</strong> — information about the venue's end customers, collected through the SessionPro booking portal. This includes:</p>
+    <ul>
+      <li>Name and email address</li>
+      <li>Date of birth (where required for age verification)</li>
+      <li>Booking history and session attendance records</li>
+      <li>Membership status and subscription details</li>
+      <li>Signed waivers and consent records</li>
+      <li>A unique QR token used for check-in</li>
+      <li>Shopify customer ID (where the customer has a Shopify account at the same store)</li>
+    </ul>
+
+    <h2>How we use this data</h2>
+    <ul>
+      <li>To operate the booking portal and allow customers to book sessions</li>
+      <li>To manage check-in at the venue using QR codes</li>
+      <li>To manage memberships and recurring subscriptions via Shopify</li>
+      <li>To send booking confirmation and transactional emails via AWS SES</li>
+      <li>To store signed waivers on behalf of the merchant via AWS S3</li>
+      <li>To sync product and pricing data with the merchant's Shopify store</li>
+    </ul>
+    <p>We do not sell customer data. We do not use customer data for advertising.</p>
+
+    <h2>Data storage and security</h2>
+    <p>Data is stored in a PostgreSQL database hosted on Railway (United States). Waiver documents are stored in AWS S3 (ap-southeast-2 region). Email is sent via AWS SES.</p>
+    <p>We use encryption in transit (TLS) for all data transfers. Access to production systems is restricted to authorised personnel.</p>
+
+    <h2>Third-party services</h2>
+    <ul>
+      <li><strong>Shopify</strong> — the platform that hosts the merchant's store. Shopify's own privacy policy applies to data processed through their platform.</li>
+      <li><strong>Railway</strong> — database and application hosting.</li>
+      <li><strong>Amazon Web Services (AWS)</strong> — file storage (S3) and email delivery (SES).</li>
+    </ul>
+
+    <h2>GDPR compliance</h2>
+    <p>SessionPro complies with Shopify's mandatory GDPR webhook requirements:</p>
+    <ul>
+      <li><strong>Customer data requests</strong> — we log and process requests to export a customer's data.</li>
+      <li><strong>Customer data erasure</strong> — when Shopify sends a redact request, we permanently delete the customer's records from our database.</li>
+      <li><strong>Shop data erasure</strong> — approximately 48 hours after a merchant uninstalls the app, we permanently delete all data associated with their shop.</li>
+    </ul>
+
+    <h2>Data retention</h2>
+    <p>Merchant and customer data is retained while the app is installed. When a merchant uninstalls SessionPro, all associated data is deleted within 48 hours of receiving Shopify's shop/redact webhook.</p>
+    <p>Merchants may request earlier deletion by contacting us at <strong>privacy@convine.com</strong>.</p>
+
+    <h2>Your rights</h2>
+    <p>If you are a customer of a venue that uses SessionPro, your rights in relation to your personal data are exercised through that venue. You may contact the venue directly or contact us at <strong>privacy@convine.com</strong> and we will direct your request appropriately.</p>
+
+    <h2>Changes to this policy</h2>
+    <p>We may update this policy from time to time. The date at the top of this page reflects when it was last changed. Continued use of SessionPro after changes constitutes acceptance of the updated policy.</p>
+
+    <h2>Contact</h2>
+    <p>For any privacy-related questions or requests: <strong>privacy@convine.com</strong></p>
+  </div>
+</div>
+
+<!-- Support Page -->
+<div id="page-support" class="page">
+  <div class="content">
+    <div class="page-header">
+      <p class="eyebrow">Help & Support</p>
+      <h1>We're here to help</h1>
+      <p class="meta">SessionPro support — typically respond within 1 business day</p>
+    </div>
+
+    <div class="contact-card">
+      <h3>Contact us</h3>
+      <p>Send us your question and we'll get back to you as soon as possible.</p>
+      <div class="contact-detail">
+        <div class="contact-row">
+          <span class="contact-label">Email</span>
+          <span class="contact-value" id="support-email">support@convine.com</span>
+          <button class="copy" onclick="copyText('support@convine.com', this)">Copy</button>
+        </div>
+      </div>
+    </div>
+
+    <h2>Common questions</h2>
+
+    <div class="faq-item">
+      <p class="faq-q">How do I set up my booking portal?</p>
+      <p class="faq-a">After installing SessionPro, go to Settings in the app. Your booking portal page is created automatically at /pages/booking. You can customise your branding, capacity limits, and session types from the app dashboard.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">How does QR code check-in work?</p>
+      <p class="faq-a">Each customer receives a unique QR code after registering. At the venue, use the Check-in screen in SessionPro to scan the code — it confirms the customer's booking and marks their attendance instantly.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">How do I set up membership plans?</p>
+      <p class="faq-a">Go to Memberships in the app and create a plan with a name, price, and billing interval. Customers can then purchase memberships through your booking portal and their status syncs automatically with Shopify.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">Can customers book for multiple people?</p>
+      <p class="faq-a">Yes. Customers can register additional participants (for example, children) under their account and book sessions for the whole group in a single checkout.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">How do waivers work?</p>
+      <p class="faq-a">You can require customers to sign a digital waiver before completing a booking. Signed waivers are stored securely and accessible from the customer's record in the app.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">What happens if I uninstall the app?</p>
+      <p class="faq-a">Your data is retained for 48 hours after uninstall in case you reinstall. After that, all your store's data is permanently deleted from our systems. See our Privacy Policy for details.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">I need to cancel my subscription</p>
+      <p class="faq-a">You can cancel at any time by uninstalling SessionPro from your Shopify admin. Go to Settings → Apps → SessionPro → Delete. Your subscription ends immediately and you won't be charged again.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">Something isn't working — what should I do?</p>
+      <p class="faq-a">Email us at support@convine.com with a description of the issue, your store URL, and any screenshots. We'll investigate and respond within 1 business day.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Convine Technologies. All rights reserved.</p>
+  <p><a href="#" onclick="showPage('privacy'); return false;">Privacy Policy</a> &nbsp;·&nbsp; <a href="#" onclick="showPage('support'); return false;">Support</a></p>
+</footer>
+
+<script>
+  function showPage(name) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    document.getElementById('page-' + name).classList.add('active');
+    document.getElementById('nav-' + name).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function copyText(text, btn) {
+    navigator.clipboard.writeText(text).then(() => {
+      const orig = btn.textContent;
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = orig, 2000);
+    }).catch(() => {
+      // fallback: select the sibling value element
+      const row = btn.closest('.contact-row');
+      const val = row?.querySelector('.contact-value');
+      if (val) {
+        const range = document.createRange();
+        range.selectNodeContents(val);
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+      }
+    });
+  }
+</script>
+
+</body></html>
