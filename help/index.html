@@ -34,62 +34,251 @@
       <li><a href="#waivers">Waivers</a></li>
       <li><a href="#customers">Customers &amp; participants</a></li>
       <li><a href="#settings">Settings &amp; branding</a></li>
+      <li><a href="#pricing">Pricing &amp; billing</a></li>
       <li><a href="#faq">Common questions</a></li>
       <li><a href="#contact">Contact support</a></li>
     </ol>
   </div>
 
-  <!-- TODO: replace each .placeholder paragraph with real documentation -->
-
   <section id="getting-started">
     <h2>Getting started</h2>
     <h3>Installing SessionPro</h3>
-    <p class="placeholder">Placeholder: how to install the app from the Shopify App Store and approve permissions.</p>
+    <ol>
+      <li>Find SessionPro on the Shopify App Store and install it on your store.</li>
+      <li>Review the permissions and approve them. SessionPro needs access to your customers, orders (read only), products, online store pages and navigation menus.</li>
+      <li>When SessionPro opens, you'll see the plan page. Select <strong>Start 14-day free trial</strong>.</li>
+      <li>Approve the charge on Shopify's confirmation page. You won't be charged during the trial. See <a href="#pricing">Pricing &amp; billing</a>.</li>
+      <li>You'll land on the SessionPro <strong>Dashboard</strong>. Until your booking portal exists, it shows a <strong>Complete your setup</strong> banner.</li>
+    </ol>
     <h3>First-time setup</h3>
-    <p class="placeholder">Placeholder: the steps a new venue should complete after installing.</p>
+    <p>Your booking pages aren't created during installation, so work through these steps in order. Your progress shows in the <strong>Setup guide</strong> on the <strong>Settings</strong> page.</p>
+    <ol>
+      <li>Go to <strong>Settings</strong>. Under <strong>Portal page</strong>, select <strong>Create portal page</strong>. This creates a "Book a Session" page at /pages/booking.</li>
+      <li>Under <strong>My account page</strong>, select <strong>Create account page</strong>. This creates a "My Account" page at /pages/my-account.</li>
+      <li>In the <strong>Setup guide</strong>, select <strong>Add SessionPro block to theme →</strong>. Your theme editor opens with the Session Booking Portal block added. Save the theme. Customers can't see the portal until you do this.</li>
+      <li>Under <strong>Waiver templates</strong>, select <strong>Add template</strong> and create your waiver. Customers can't finish an online booking until a waiver is set up. See <a href="#waivers">Waivers</a>.</li>
+      <li>Go to <strong>Schedule</strong> and add your first session type and schedule. See <a href="#sessions">Sessions &amp; scheduling</a>.</li>
+      <li>Back in <strong>Settings</strong>, set your <strong>Maximum venue capacity</strong> if you have one, and fill in <strong>Branding</strong>.</li>
+      <li>Select <strong>Open page</strong> under <strong>Portal page</strong> and make a test booking to check everything works.</li>
+    </ol>
   </section>
 
   <section id="sessions">
     <h2>Sessions &amp; scheduling</h2>
+    <p>A <strong>session type</strong> is something you offer, such as General Skate or Beginner Class. Each session type has one or more <strong>schedules</strong>, which repeat weekly and create the individual sessions customers book.</p>
     <h3>Creating a session type</h3>
-    <p class="placeholder">Placeholder: how to create session types (e.g. public skate, lessons, private hire).</p>
+    <p>Each session type must be linked to its own Shopify product, because customers pay through your store's checkout. Create the product in Shopify first. Set it as not a physical product so shipping isn't added at checkout.</p>
+    <ol>
+      <li>Go to <strong>Schedule</strong> and select <strong>Add session type</strong>.</li>
+      <li>Enter a <strong>Name</strong> and, if you like, a <strong>Description</strong>.</li>
+      <li>Under <strong>Shopify product</strong>, choose <strong>Select product</strong> and pick the product. A product can only be linked to one session type.</li>
+      <li>Enter the <strong>Walk-in price</strong> and <strong>Member price</strong>. The member price can't be higher than the walk-in price. SessionPro creates a hidden member version of your product to charge this price.</li>
+      <li>Add the <strong>Duration (minutes)</strong> if you want it, and leave <strong>Active</strong> ticked. Inactive session types are hidden from the booking page.</li>
+      <li>Select <strong>Save</strong>. SessionPro takes you straight to <strong>Add schedule</strong>.</li>
+    </ol>
     <h3>Capacity limits</h3>
-    <p class="placeholder">Placeholder: how to set and change capacity per session.</p>
+    <p>There are two limits, and you can use either or both:</p>
+    <ul>
+      <li><strong>Per session:</strong> set <strong>Capacity per session (optional)</strong> on the schedule. Leave it blank for unlimited bookings.</li>
+      <li><strong>Whole venue:</strong> go to <strong>Settings</strong>, then <strong>Venue</strong>, and set <strong>Maximum venue capacity</strong>. Online bookings stop when this limit is reached. Leave it blank for no limit.</li>
+    </ul>
+    <p>To change a session's capacity, open the session type and select <strong>Edit</strong> next to the schedule. Changing the capacity, start time, end time or days creates a new series of sessions from today. Sessions up to today are kept, and SessionPro warns you before you save.</p>
     <h3>Recurring schedules</h3>
-    <p class="placeholder">Placeholder: how to set up repeating sessions and handle holidays or closures.</p>
+    <ol>
+      <li>Go to <strong>Schedule</strong>, open a session type and select <strong>Add schedule</strong>.</li>
+      <li>Enter a <strong>Start time</strong> and <strong>End time</strong>. A <strong>Schedule name</strong> is optional, and useful if a session type has several schedules.</li>
+      <li>Tick the days it runs. Every day is ticked to begin with.</li>
+      <li>Set the capacity, and leave <strong>Online bookable</strong> ticked if customers can book this schedule themselves.</li>
+      <li>Set <strong>Valid from</strong>. Leave <strong>Valid until</strong> blank to run indefinitely.</li>
+      <li>Select <strong>Save schedule</strong>.</li>
+    </ol>
+    <p>SessionPro creates sessions for the next 60 days and adds more automatically each day. To add them straight away, select <strong>Generate sessions</strong> on the session type page.</p>
+    <p>To stop a schedule, select <strong>Deactivate</strong>. All future sessions are cancelled and existing bookings are flagged for review. You can only <strong>Delete</strong> a schedule that has no customer bookings.</p>
+    <h3>Holidays and closures</h3>
+    <ol>
+      <li>Go to <strong>Schedule</strong> and select <strong>Manage calendar</strong>.</li>
+      <li>Select <strong>Add event</strong>, then enter the <strong>Date</strong> and <strong>Event name</strong>.</li>
+      <li>Choose <strong>Closed</strong> or <strong>Public holiday</strong>.</li>
+      <li>For a public holiday, choose <strong>Percentage</strong> or <strong>Fixed amount</strong> and enter the surcharge.</li>
+      <li>Select <strong>Add event</strong> to save.</li>
+    </ol>
+    <p><strong>Closed</strong> cancels every open session on that date and stops new ones being created. Customers who already booked are not emailed or refunded automatically, so you'll need to contact them yourself. SessionPro shows how many bookings are affected before you save.</p>
+    <p class="placeholder"><strong>TODO:</strong> confirm where staff can see which bookings were flagged by a closed day. Add those steps here.</p>
+    <p><strong>Public holiday</strong> keeps sessions running and adds the surcharge to open sessions on that date. It appears as a separate item at checkout.</p>
   </section>
 
   <section id="booking-portal">
     <h2>Booking portal</h2>
-    <p class="placeholder">Placeholder: where the booking portal lives on your store (/pages/booking), how customers book, and how to link to it from your theme.</p>
+    <p>The booking portal is where customers sign in, book sessions and manage their account. It lives on your store at /pages/booking, and the account area is at /pages/my-account. Both are set up in <a href="#getting-started">First-time setup</a>.</p>
+    <h3>Linking to it from your store</h3>
+    <p>When you create the pages, SessionPro tries to add <strong>Book a Session</strong> and <strong>My Account</strong> to your store's main menu. If it can't, select <strong>Open navigation settings</strong> and add them yourself. <strong>Copy link</strong> in <strong>Settings</strong> gives you the page address to use elsewhere.</p>
+    <p>You can also add these blocks in your theme editor:</p>
+    <ul>
+      <li><strong>Session Booking Portal:</strong> the full portal. It only appears on your booking and account pages.</li>
+      <li><strong>Session Listing:</strong> shows upcoming sessions, up to 14 days ahead.</li>
+      <li><strong>Membership Plans:</strong> shows your plans with a <strong>Join Now</strong> button.</li>
+    </ul>
+    <h3>How customers book</h3>
+    <ol>
+      <li>The customer opens the booking page and signs in, or selects <strong>Create account</strong>.</li>
+      <li>They choose a session, and who it's for if they have children on their account.</li>
+      <li>Anyone without a valid waiver is asked to sign before the booking can be confirmed.</li>
+      <li>They're sent to your Shopify checkout to pay. Members pay the member price, and any public holiday surcharge is added.</li>
+      <li>Once payment goes through, the booking is confirmed and they're emailed a confirmation with their QR code.</li>
+    </ol>
+    <p>If you delete the page by accident, select <strong>Recreate portal page</strong> in <strong>Settings</strong>. An existing page is left unchanged.</p>
+    <h3>Customer cancellations</h3>
+    <p>Customers can cancel a booking from <strong>My Account</strong> up to 24 hours before the session starts. After that, they're told to contact you. Cancelling frees up the spot but doesn't refund the customer, so issue any refund through the order in Shopify.</p>
   </section>
 
   <section id="check-in">
     <h2>QR check-in</h2>
-    <p class="placeholder">Placeholder: how customers receive their QR code and how staff scan it on the Check-in screen.</p>
+    <h3>How customers get their QR code</h3>
+    <p>Each customer has their own QR code, which doesn't change from visit to visit. They can find it:</p>
+    <ul>
+      <li>in their welcome email, sent when they create an account</li>
+      <li>in their booking confirmation email</li>
+      <li>on their <strong>My Account</strong> page</li>
+      <li>on a printout, if staff register them. Select <strong>Print QR code</strong> after registering.</li>
+    </ul>
+    <h3>Checking a customer in</h3>
+    <ol>
+      <li>Go to <strong>Check-in</strong>.</li>
+      <li>Scan the code into the <strong>Scan QR code or search by name / email</strong> box, or select <strong>Open camera</strong> to use your device's camera. You can also search by name or email.</li>
+      <li>The customer's details open, showing their membership and waiver status. Any booking for today appears as <strong>Pre-booked</strong>.</li>
+      <li>Check the <strong>Session</strong> is right and choose a <strong>Payment method</strong>: Pre-booked (Shopify online), Shopify POS, Cash, EFTPOS, Complimentary or Unpaid / Skip payment.</li>
+      <li>If they've brought children on their account, tick them under <strong>Include dependants</strong>.</li>
+      <li>Add <strong>Payment notes</strong> or <strong>Notes</strong> if needed, then select <strong>Check in</strong>.</li>
+    </ol>
+    <p>Scanning only opens the customer's details. Attendance isn't recorded until you select <strong>Check in</strong>.</p>
+    <h3>Good to know</h3>
+    <ul>
+      <li><strong>No waiver:</strong> if a customer has no waiver on file, select <strong>Generate sign link</strong> and share the link with them. A missing waiver warns staff but doesn't stop the check-in.</li>
+      <li><strong>New customers:</strong> select <strong>New customer? Show registration QR code</strong> so they can register on their own phone.</li>
+      <li><strong>Today's numbers:</strong> <strong>Today's sessions</strong> lists what's on today. If you've set a venue capacity, <strong>Venue occupancy</strong> shows how full you are.</li>
+      <li><strong>Lost code:</strong> open the customer's record and select <strong>Rotate token</strong>. The old code stops working, so print the new one before their next visit.</li>
+    </ul>
   </section>
 
   <section id="memberships">
     <h2>Memberships</h2>
+    <p>Members get the <strong>Member price</strong> on every session type. You can assign a membership yourself, or sell one through your store.</p>
+    <div class="info-box">
+      <p><strong>How membership payments work:</strong> SessionPro doesn't bill members on a recurring basis. Online purchases are a single Shopify order, and the membership then stays <strong>Active</strong> until you cancel it. SessionPro doesn't track renewals or failed payments, so <strong>Billing cycle</strong> and <strong>Trial days</strong> are shown to customers but not applied automatically.</p>
+    </div>
     <h3>Creating a plan</h3>
-    <p class="placeholder">Placeholder: plan name, price, billing interval and what's included.</p>
+    <ol>
+      <li>Go to <strong>Memberships</strong> and select <strong>Add plan</strong>.</li>
+      <li>Enter a <strong>Plan name</strong>, and a <strong>Description</strong> if you'd like one. Customers see this on the booking portal.</li>
+      <li>Enter a <strong>Price</strong>. Use 0 for a free plan.</li>
+      <li>Choose a <strong>Billing cycle</strong>, and enter <strong>Trial days</strong> if you offer a trial.</li>
+      <li>To sell the plan online, choose <strong>Select product</strong> and link a Shopify product. Customers pay the price set on that product, so make sure it matches the plan. If you leave this empty, customers see <strong>Contact the venue to join this plan</strong> and only staff can assign it.</li>
+      <li>Leave <strong>Active</strong> ticked and select <strong>Save plan</strong>.</li>
+    </ol>
+    <p>Customers buy a linked plan by selecting <strong>Subscribe</strong> on the portal and paying at checkout. Their membership starts once the order is paid.</p>
     <h3>Managing members</h3>
-    <p class="placeholder">Placeholder: pausing, cancelling and viewing membership status.</p>
+    <ul>
+      <li><strong>Assign a membership:</strong> select <strong>Assign membership</strong> on the <strong>Memberships</strong> page, or open a plan and use <strong>Find customer</strong>. A customer can only have one active membership at a time.</li>
+      <li><strong>See members:</strong> the <strong>Memberships</strong> page lists everyone, and you can search or filter by status. Opening a plan shows its members. All memberships currently show a <strong>Manual</strong> badge, including ones bought online.</li>
+      <li><strong>Cancel a membership:</strong> open the plan and select <strong>Cancel</strong> next to the member. This takes effect straight away and doesn't refund the customer. Customers can't cancel for themselves, so the portal asks them to contact you.</li>
+      <li><strong>Stop offering a plan:</strong> open it and select <strong>Deactivate plan</strong>. It's hidden from customers, and existing members keep their membership.</li>
+    </ul>
+    <p>There's no way to pause a membership at the moment. To stop one, cancel it.</p>
   </section>
 
   <section id="waivers">
     <h2>Waivers</h2>
-    <p class="placeholder">Placeholder: enabling waivers, editing waiver text, and finding signed waivers on a customer record.</p>
+    <p>Customers must have a valid waiver before they can book online. If you haven't created a waiver yet, customers see "This venue has not yet set up their waiver" and can't complete a booking.</p>
+    <h3>Creating your waiver</h3>
+    <ol>
+      <li>Go to <strong>Settings</strong>. Under <strong>Waiver templates</strong>, select <strong>Add template</strong>.</li>
+      <li>Enter a <strong>Title</strong> and your full wording in <strong>Waiver content</strong>.</li>
+      <li>To have a guardian co-sign for children, enter an age in <strong>Guardian signature required under age</strong>. For example, enter 18 to cover everyone under 18.</li>
+      <li>Leave <strong>Event-specific template</strong> unticked for your everyday waiver. Tick it only for a waiver used with particular group bookings or events.</li>
+      <li>Save the template. It becomes your active waiver straight away. Only one everyday waiver is active at a time.</li>
+    </ol>
+    <h3>Setting how long waivers last</h3>
+    <p>Go to <strong>Settings</strong>, then <strong>Waivers</strong>, and enter <strong>Waiver validity (days)</strong>. Leave it blank for waivers that never expire.</p>
+    <p>If you set an expiry, customers are emailed in the 7 days before their waiver expires, and again once it has expired. Guardians are also emailed when a child needs a waiver.</p>
+    <h3>Changing your waiver</h3>
+    <p>Open the template from <strong>Settings</strong> and edit it. Changing the content creates a new version and keeps the old one for your records. Customers then need to sign the new version before their next online booking.</p>
+    <h3>Getting a waiver signed in person</h3>
+    <ul>
+      <li>On the customer's record, select <strong>Sign waiver now</strong> to sign on your device.</li>
+      <li>On the <strong>Check-in</strong> screen, select <strong>Generate sign link</strong> to send them a link.</li>
+    </ul>
+    <h3>Finding a signed waiver</h3>
+    <p>Go to <strong>Customers</strong>, open the customer and scroll to <strong>Waiver history</strong>. The current waiver is marked <strong>Latest</strong>, and older ones are marked <strong>Superseded</strong>.</p>
+    <h3>Turning the waiver requirement off</h3>
+    <p>Unticking <strong>Enable waiver requirement</strong> in <strong>Settings</strong> stops expiry emails and removes the waiver requirement for group bookings. It doesn't currently remove the waiver step from online session bookings.</p>
   </section>
 
   <section id="customers">
     <h2>Customers &amp; participants</h2>
-    <p class="placeholder">Placeholder: customer records, adding participants (e.g. children) under one account, and booking history.</p>
+    <p>The <strong>Customers</strong> page has two tabs, <strong>Customers</strong> and <strong>Guardians</strong>. Search by name or email to find someone. <strong>Possible duplicate</strong> means another customer has the same name and date of birth.</p>
+    <p>Customers join by creating an account on your booking portal, or staff can register them.</p>
+    <h3>Registering a customer</h3>
+    <ol>
+      <li>Go to <strong>Customers</strong> and select <strong>Register customer</strong>.</li>
+      <li>Enter their name and <strong>Date of birth</strong>. <strong>Email</strong> is required for adults and optional for under 18s. <strong>Phone</strong> is optional.</li>
+      <li>For anyone under 18, choose <strong>Guardian has an existing account</strong>, <strong>Register a new guardian account</strong> or <strong>Guardian not available right now</strong>. Tick <strong>Guardian identity verified by staff</strong> if they've shown ID or you know them.</li>
+      <li>Add an emergency contact.</li>
+      <li>Check the details and select <strong>Confirm &amp; Register</strong>. You can then select <strong>Print QR code</strong>.</li>
+    </ol>
+    <h3>Adding participants</h3>
+    <p>Parents can add children to their own account. On <strong>My Account</strong>, they select <strong>+ Add a child</strong> and enter the child's details and an emergency contact. They can then book sessions for themselves and their children in one checkout, and each child has their own QR code and waiver.</p>
+    <p>Only children linked to the customer's account can be added to a booking.</p>
+    <h3>What's on a customer record</h3>
+    <ul>
+      <li>personal details, which you can edit</li>
+      <li>their QR code, with options to print or replace it</li>
+      <li><strong>Guardian</strong> for under 18s, or <strong>Dependants</strong> if they're a parent</li>
+      <li>emergency contacts</li>
+      <li><strong>Waiver history</strong></li>
+      <li><strong>Visit history</strong>, showing each check-in</li>
+    </ul>
+    <p>Upcoming bookings aren't listed on the record. Customers can see theirs on <strong>My Account</strong>.</p>
   </section>
 
   <section id="settings">
     <h2>Settings &amp; branding</h2>
-    <p class="placeholder">Placeholder: venue name, logo, colours, reply email and timezone.</p>
+    <p>Go to <strong>Settings</strong> in the SessionPro menu. The page is divided into these areas:</p>
+    <ul>
+      <li><strong>Portal page</strong> and <strong>My account page:</strong> create your customer pages, open them, copy their links or restore them if deleted.</li>
+      <li><strong>Setup guide:</strong> shows which setup steps you've finished.</li>
+      <li><strong>Venue:</strong> your <strong>Maximum venue capacity</strong>.</li>
+      <li><strong>Waivers</strong> and <strong>Waiver templates:</strong> see <a href="#waivers">Waivers</a>.</li>
+      <li><strong>Branding:</strong> how SessionPro looks to your customers.</li>
+    </ul>
+    <h3>Setting up your branding</h3>
+    <ol>
+      <li>Enter your <strong>Brand name</strong>, which shows in emails and the customer portal header. If you leave this blank, SessionPro uses your store's name.</li>
+      <li>Add a short <strong>Tagline</strong> to show under your name.</li>
+      <li>Enter a <strong>Primary colour</strong> as a colour code, such as #008060. It's used for buttons and accents.</li>
+      <li>Enter a <strong>Reply-to email</strong>. When customers reply to a SessionPro email, it comes here.</li>
+      <li>In <strong>Logo URL</strong>, paste a direct web address for your logo. You can't upload a file here, so use an image already online, such as one in your Shopify files. A PNG or SVG around 200×60 pixels works best.</li>
+      <li>Check the <strong>Email header preview</strong> and select <strong>Save</strong>.</li>
+    </ol>
+    <h3>Timezone</h3>
+    <p>There's no timezone setting in SessionPro. It uses the timezone from your Shopify store settings, so change it there if your session times look wrong.</p>
+  </section>
+
+  <section id="pricing">
+    <h2>Pricing &amp; billing</h2>
+    <p>SessionPro has one plan: <strong>$29 AUD every 30 days</strong>, with a <strong>14-day free trial</strong>. It includes unlimited bookings and sessions, QR code check-in, membership management, digital waivers, group bookings and events, and the analytics dashboard.</p>
+    <h3>How billing works</h3>
+    <ul>
+      <li>Shopify handles all billing, and the charge appears on your Shopify bill. You don't give SessionPro any payment details.</li>
+      <li>You start the trial by selecting <strong>Start 14-day free trial</strong> and approving the charge in Shopify. You can't use the app until you've approved it.</li>
+      <li>You aren't charged during the trial. Your first $29 AUD charge comes when the trial ends, then every 30 days after that.</li>
+      <li>Billing runs on a 30-day cycle rather than a calendar month, so your billing date moves around slightly.</li>
+    </ul>
+    <h3>Cancelling</h3>
+    <p>To cancel, uninstall the app. In your Shopify admin, go to <strong>Settings → Apps and sales channels</strong>, then uninstall SessionPro. There's no separate cancel button in the app.</p>
+    <p>Uninstalling cancels your subscription and stops future charges, including during your trial. You won't automatically get a credit for unused days in your current billing period.</p>
+    <p class="placeholder"><strong>TODO:</strong> add your refund policy for unused days, if you have one.</p>
+    <p class="placeholder"><strong>TODO:</strong> confirm whether a merchant who reinstalls gets a new 14-day trial or only their unused trial days.</p>
+    <p>Uninstalling also leads to your SessionPro data being deleted. See <a href="#faq">Common questions</a>.</p>
   </section>
 
   <section id="faq">
@@ -97,37 +286,43 @@
 
     <div class="faq-item">
       <p class="faq-q">How do I set up my booking portal?</p>
-      <p class="faq-a">After installing SessionPro, go to Settings in the app. Your booking portal page is created automatically at /pages/booking. You can customise your branding, capacity limits, and session types from the app dashboard.</p>
+      <p class="faq-a">Go to Settings in the app and select Create portal page. This creates your page at /pages/booking. Then select Add SessionPro block to theme → in the Setup guide and save your theme. The page isn't created automatically when you install. See <a href="#getting-started">First-time setup</a> for every step.</p>
     </div>
 
     <div class="faq-item">
       <p class="faq-q">How does QR code check-in work?</p>
-      <p class="faq-a">Each customer receives a unique QR code after registering. At the venue, use the Check-in screen in SessionPro to scan the code — it confirms the customer's booking and marks their attendance instantly.</p>
+      <p class="faq-a">Each customer has a unique QR code, sent by email and available on their My Account page. At the venue, scan it on the Check-in screen to bring up the customer and their booking, choose a payment method, then select Check in to record their attendance. See <a href="#check-in">QR check-in</a>.</p>
     </div>
 
     <div class="faq-item">
       <p class="faq-q">How do I set up membership plans?</p>
-      <p class="faq-a">Go to Memberships in the app and create a plan with a name, price, and billing interval. Customers can then purchase memberships through your booking portal and their status syncs automatically with Shopify.</p>
+      <p class="faq-a">Go to Memberships in the app and select Add plan. Link a Shopify product if you want to sell the plan online. Otherwise, staff can assign it. See <a href="#memberships">Memberships</a>.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">Does membership status sync with Shopify?</p>
+      <p class="faq-a">Partly, and only in one direction. When a membership is assigned or purchased, SessionPro updates the customer's record in Shopify to show their status and plan. Changes in Shopify don't flow back. SessionPro doesn't track renewals or failed payments, and cancelling a membership doesn't update the customer's record in Shopify straight away. Treat the Memberships page in SessionPro as the correct record.</p>
     </div>
 
     <div class="faq-item">
       <p class="faq-q">Can customers book for multiple people?</p>
-      <p class="faq-a">Yes. Customers can register additional participants (for example, children) under their account and book sessions for the whole group in a single checkout.</p>
+      <p class="faq-a">Yes, for children linked to their account. Customers select + Add a child on My Account, then book for themselves and their children in a single checkout. Each person needs a valid waiver. Friends or other adults need their own account.</p>
     </div>
 
     <div class="faq-item">
       <p class="faq-q">How do waivers work?</p>
-      <p class="faq-a">You can require customers to sign a digital waiver before completing a booking. Signed waivers are stored securely and accessible from the customer's record in the app.</p>
+      <p class="faq-a">Customers sign your digital waiver online before they can complete a booking, so create a waiver template during setup. Signed waivers are stored securely and appear under Waiver history on the customer's record. See <a href="#waivers">Waivers</a>.</p>
     </div>
 
     <div class="faq-item">
       <p class="faq-q">What happens if I uninstall the app?</p>
-      <p class="faq-a">Your data is retained for 48 hours after uninstall in case you reinstall. After that, all your store's data is permanently deleted from our systems. See our <a href="/privacy/">Privacy Policy</a> for details.</p>
+      <p class="faq-a">Your subscription is cancelled. About 48 hours later, Shopify asks SessionPro to delete your store's data, and it's permanently removed from our systems. Don't rely on your data being kept if you reinstall, so keep your own copy of anything you need first. See our <a href="/privacy/">Privacy Policy</a> for details.</p>
+      <p class="faq-a placeholder"><strong>TODO:</strong> confirm the deletion process works from start to finish before publishing this answer, including signed waiver files.</p>
     </div>
 
     <div class="faq-item">
       <p class="faq-q">I need to cancel my subscription</p>
-      <p class="faq-a">You can cancel at any time by uninstalling SessionPro from your Shopify admin. Go to Settings → Apps → SessionPro → Delete. Your subscription ends immediately and you won't be charged again.</p>
+      <p class="faq-a">You can cancel at any time by uninstalling SessionPro from your Shopify admin. Go to Settings → Apps and sales channels, then uninstall SessionPro. Your subscription is cancelled and you won't be charged again, but you won't automatically get a credit for unused days. See <a href="#pricing">Pricing &amp; billing</a>.</p>
     </div>
 
     <div class="faq-item">
